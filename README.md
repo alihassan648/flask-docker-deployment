@@ -1,27 +1,36 @@
 # Flask Docker Deployment
 
-A production-ready Python web application deployed on a Linux VPS using Docker and Nginx.
+A production-ready Python web application deployed on a Linux VPS 
+using Docker, PostgreSQL, Nginx and Gunicorn.
 
 ## Live Demo
 https://sohailali.site
 
 ## Architecture
 ```
-Client → HTTPS (SSL) → Nginx (Reverse Proxy) → Docker Container → Flask App
+Client → HTTPS (SSL) → Nginx (Reverse Proxy) → Gunicorn → Flask App → PostgreSQL
 ```
 
 ## Stack
 - Python 3.11 + Flask
+- Gunicorn (production WSGI server, 4 workers)
+- PostgreSQL 15 (containerized, private network)
 - Docker + Docker Compose
 - Nginx reverse proxy
 - Let's Encrypt SSL certificate
 - DigitalOcean Ubuntu VPS
 
-## Features
-- Live HTTPS endpoint
-- /health monitoring endpoint
-- Auto-restart on failure (restart: always)
-- Production Nginx configuration
+## Key Concepts Demonstrated
+- Multi-container Docker application
+- Private Docker networking between containers
+- Database never exposed to internet
+- Environment variables for configuration
+- Production WSGI server (not development server)
+- Automated SSL certificate renewal
+
+## Endpoints
+- / → Main page
+- /health → Returns database connection status
 
 ## Deployment
 ```bash
