@@ -27,6 +27,7 @@ Client → HTTPS (SSL) → Nginx (Reverse Proxy) → Gunicorn → Flask App → 
 - Environment variables for configuration
 - Production WSGI server (not development server)
 - Automated SSL certificate renewal
+- Docker always bypasses UFW, which is solved by binding sensitive ports to 127.0.0.1 in docker compose file
 
 ## Endpoints
 - / → Main page
